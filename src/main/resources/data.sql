@@ -1,5 +1,5 @@
 -- INSERT Genres
-INSERT INTO genres (id, genre, total_likes, total_plays)
+INSERT INTO pod_genres (id, genre, total_likes, total_plays)
 VALUES
     (1, 'Comedy', 0, 0),
     (2, 'Movies', 0, 0),
