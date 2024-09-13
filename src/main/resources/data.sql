@@ -15,20 +15,20 @@ VALUES
 INSERT INTO pods (id, type, title, url, release_date, play_counter, likes, dis_likes)
 VALUES
     -- POD
-    (1, 'Pod', '#1169', 'url1', '2006-02-07', 0, 0, 0),
-    (2, 'Pod','#1278', 'url2', '2006-02-07', 0, 0, 0),
-    (3, 'Pod', '#1675', 'url3', '2006-02-07', 0, 0, 0),
-    (4, 'Pod', '#919', 'url4', '2006-02-07', 0, 0, 0),
+    (1, 'Pod', '#1169', 'url66', '2006-02-07', 0, 0, 0),
+    (2, 'Pod','#1278', 'url67', '2006-02-07', 0, 0, 0),
+    (3, 'Pod', '#1675', 'url68', '2006-02-07', 0, 0, 0),
+    (4, 'Pod', '#919', 'url69', '2006-02-07', 0, 0, 0),
 
-    (5, 'Pod', 'Neuralink and the Guture of Humanity', 'url5', '2006-02-07', 0, 0, 0),
-    (6, 'Pod', 'Putin, Navalny, Trump, CIA, NSA, War, Politics & Freedom', 'url6', '2006-02-07', 0, 0, 0),
-    (7, 'Pod', 'Kanye West Interview', 'url7', '2006-02-07', 0, 0, 0),
-    (8, 'Pod', 'Jungle, Apex Predators, Aliens, Uncontacted Tribes and God', 'url8', '2006-02-07', 0, 0, 0),
+    (5, 'Pod', 'Neuralink and the Guture of Humanity', 'url70', '2006-02-07', 0, 0, 0),
+    (6, 'Pod', 'Putin, Navalny, Trump, CIA, NSA, War, Politics & Freedom', 'url71', '2006-02-07', 0, 0, 0),
+    (7, 'Pod', 'Kanye West Interview', 'url72', '2006-02-07', 0, 0, 0),
+    (8, 'Pod', 'Jungle, Apex Predators, Aliens, Uncontacted Tribes and God', 'url73', '2006-02-07', 0, 0, 0),
 
-    (9, 'Pod', '#530', 'url9', '2006-02-07', 0, 0, 0),
-    (10, 'Pod', '#514', 'url10', '2006-02-07', 0, 0, 0),
-    (11, 'Pod', '#489', 'url11', '2006-02-07', 0, 0, 0),
-    (12, 'Pod', '#529', 'url12', '2006-02-07', 0, 0, 0)
+    (9, 'Pod', '#530', 'url74', '2006-02-07', 0, 0, 0),
+    (10, 'Pod', '#514', 'url75', '2006-02-07', 0, 0, 0),
+    (11, 'Pod', '#489', 'url76', '2006-02-07', 0, 0, 0),
+    (12, 'Pod', '#529', 'url77', '2006-02-07', 0, 0, 0)
 ;
 
 INSERT INTO pods_genres (pods_id, genre_id)
