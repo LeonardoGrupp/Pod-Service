@@ -1,11 +1,11 @@
 package com.example.PodMicroservice_CopyAllToNew.services;
 
 import com.example.PodMicroservice_CopyAllToNew.dto.PodDTO;
+import com.example.PodMicroservice_CopyAllToNew.entities.Album;
+import com.example.PodMicroservice_CopyAllToNew.entities.Artist;
 import com.example.PodMicroservice_CopyAllToNew.entities.Genre;
 import com.example.PodMicroservice_CopyAllToNew.entities.Pod;
 import com.example.PodMicroservice_CopyAllToNew.repositories.PodRepository;
-import com.example.PodMicroservice_CopyAllToNew.vo.Album;
-import com.example.PodMicroservice_CopyAllToNew.vo.Artist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +21,16 @@ import java.util.Optional;
 public class PodService implements PodServiceInterface {
 
     private PodRepository podRepository;
-    private RestTemplate restTemplate;
     private GenreService genreService;
+    private AlbumService albumService;
+    private ArtistService artistService;
 
     @Autowired
-    public PodService(PodRepository podRepository, RestTemplate restTemplate, GenreService genreService) {
+    public PodService(PodRepository podRepository, GenreService genreService, AlbumService albumService, ArtistService artistService) {
         this.podRepository = podRepository;
-        this.restTemplate = restTemplate;
         this.genreService = genreService;
+        this.albumService = albumService;
+        this.artistService = artistService;
     }
 
     @Override
@@ -130,24 +132,22 @@ public class PodService implements PodServiceInterface {
 
         // Check to see if album exist
         for (String albumName : podDTO.getAlbumInputs()) {
-            ResponseEntity<Boolean> albumNameResponse = restTemplate.getForEntity("lb://album-service/album/exists/" + albumName, Boolean.class);
-
-            Boolean albumExist = albumNameResponse.getBody();
+            Boolean albumExist = albumService.checkIfAlbumExistsByName(albumName);
 
             if (!albumExist) {
-                ResponseEntity<Album> createAlbum = restTemplate.postForEntity("lb://album-service/album/createAlbum", new Album(albumName), Album.class);
+                Album album = new Album(albumName, "");
+                albumService.createAlbum(album);
             }
 
         }
 
         // Check to see if artist exist
         for (String artistName : podDTO.getArtistInputs()) {
-            ResponseEntity<Boolean> artistNameResponse = restTemplate.getForEntity("lb://artist-service/artist/exists/" + artistName, Boolean.class);
-
-            Boolean artistExist = artistNameResponse.getBody();
+            Boolean artistExist = artistService.checkIfArtistExistByName(artistName);
 
             if (!artistExist) {
-                ResponseEntity<Artist> createArtist = restTemplate.postForEntity("lb://artist-service/artist/createArtist", new Artist(artistName), Artist.class);
+                Artist artist = new Artist(artistName);
+                artistService.createArtist(artist);
             }
         }
 
@@ -176,12 +176,12 @@ public class PodService implements PodServiceInterface {
 
     @Override
     public List<Album> getAllAlbums(PodDTO podDTO) {
-        ResponseEntity<Album[]> allAlbumsArray = restTemplate.getForEntity("lb://album-service/album/getAllAlbums", Album[].class);
+        List<Album> allAlbums = albumService.getAllAlbums();
 
         List<Album> albumList = new ArrayList<>();
 
-        if (allAlbumsArray != null) {
-            for (Album album : allAlbumsArray.getBody()) {
+        if (allAlbums != null) {
+            for (Album album : allAlbums) {
                 for (String albumName : podDTO.getAlbumInputs()) {
                     if (albumName.toLowerCase().equals(album.getName().toLowerCase())) {
                         albumList.add(album);
@@ -195,10 +195,12 @@ public class PodService implements PodServiceInterface {
 
     @Override
     public List<Artist> getAllArtists(PodDTO podDTO) {
-        ResponseEntity<Artist[]> allArtistsArray = restTemplate.getForEntity("lb://artist-service/artist/getAllArtists", Artist[].class);
+        List<Artist> allArtists = artistService.getAllArtists();
+
         List<Artist> artistList = new ArrayList<>();
-        if (allArtistsArray != null) {
-            for (Artist artist : allArtistsArray.getBody()) {
+
+        if (allArtists != null) {
+            for (Artist artist : allArtists) {
                 for (String artistName : podDTO.getArtistInputs()) {
                     if (artistName.toLowerCase().equals(artist.getName().toLowerCase())) {
                         artistList.add(artist);

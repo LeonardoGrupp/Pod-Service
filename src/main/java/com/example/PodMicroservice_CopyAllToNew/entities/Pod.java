@@ -1,7 +1,5 @@
 package com.example.PodMicroservice_CopyAllToNew.entities;
 
-import com.example.PodMicroservice_CopyAllToNew.vo.Album;
-import com.example.PodMicroservice_CopyAllToNew.vo.Artist;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -33,17 +31,19 @@ public class Pod {
     )
     private List<Genre> genres;
 
-    @ElementCollection
-    @CollectionTable(
+    @ManyToMany
+    @JoinTable(
             name = "pods_albums",
-            joinColumns = @JoinColumn(name = "pods_id")
+            joinColumns = @JoinColumn(name = "pods_id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id")
     )
     private List<Album> albums;
 
-    @ElementCollection
-    @CollectionTable(
+    @ManyToMany
+    @JoinTable(
             name = "pods_artists",
-            joinColumns = @JoinColumn(name = "pods_id")
+            joinColumns = @JoinColumn(name = "pods_id"),
+            inverseJoinColumns = @JoinColumn(name = "artist_id")
     )
     private List<Artist> artists;
 

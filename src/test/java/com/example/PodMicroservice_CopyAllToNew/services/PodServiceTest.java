@@ -4,8 +4,6 @@ import com.example.PodMicroservice_CopyAllToNew.dto.PodDTO;
 import com.example.PodMicroservice_CopyAllToNew.entities.Genre;
 import com.example.PodMicroservice_CopyAllToNew.entities.Pod;
 import com.example.PodMicroservice_CopyAllToNew.repositories.PodRepository;
-import com.example.PodMicroservice_CopyAllToNew.vo.Album;
-import com.example.PodMicroservice_CopyAllToNew.vo.Artist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
