@@ -25,4 +25,5 @@ public interface PodServiceInterface {
     String playPod(String url);
     String likePod(String url);
     String disLikePod(String url);
+    Boolean checkIfPodExistByUrl(String url);
 }

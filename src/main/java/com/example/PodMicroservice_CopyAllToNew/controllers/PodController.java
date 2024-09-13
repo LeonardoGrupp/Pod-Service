@@ -75,4 +75,9 @@ public class PodController {
     public ResponseEntity<String> disLikePod(@PathVariable("url") String url) {
         return ResponseEntity.ok(podService.disLikePod(url));
     }
+
+    @GetMapping("/exists/{url}")
+    public ResponseEntity<Boolean> podExist(@PathVariable("url") String url) {
+        return ResponseEntity.ok(podService.checkIfPodExistByUrl(url));
+    }
 }

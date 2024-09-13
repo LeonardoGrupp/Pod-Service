@@ -450,4 +450,30 @@ class PodControllerTest {
 
         verify(podServiceMock).disLikePod(url);
     }
+
+    @Test
+    void podExistShouldReturnTrue() {
+        String url = "url";
+
+        when(podServiceMock.checkIfPodExistByUrl(url)).thenReturn(true);
+
+        ResponseEntity<Boolean> response = podController.podExist(url);
+
+        assertTrue(response.getBody(), "ERROR: Response was false");
+
+        verify(podServiceMock).checkIfPodExistByUrl(url);
+    }
+
+    @Test
+    void podExistShouldReturnFalse() {
+        String url = "url";
+
+        when(podServiceMock.checkIfPodExistByUrl(url)).thenReturn(false);
+
+        ResponseEntity<Boolean> response = podController.podExist(url);
+
+        assertFalse(response.getBody(), "ERROR: Response was true");
+
+        verify(podServiceMock).checkIfPodExistByUrl(url);
+    }
 }

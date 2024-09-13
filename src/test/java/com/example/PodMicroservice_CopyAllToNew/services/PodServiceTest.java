@@ -669,4 +669,31 @@ class PodServiceTest {
         assertEquals("ERROR: pod with URL not found", response.getReason(), "ERROR: Exceptions was not identical");
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode(), "ERROR: Status Codes was not identical");
     }
+
+    @Test
+    void checkIfPodExistByUrlShouldReturnTrue() {
+        String url = "url";
+        Pod pod = new Pod("title", "url", "release");
+
+        when(podRepositoryMock.findPodByUrl(url)).thenReturn(pod);
+
+        Boolean response = podService.checkIfPodExistByUrl(url);
+
+        assertTrue(response, "ERROR: Response was false");
+
+        verify(podRepositoryMock).findPodByUrl(url);
+    }
+
+    @Test
+    void checkIfPodExistByUrlShouldReturnFalse() {
+        String url = "url";
+
+        when(podRepositoryMock.findPodByUrl(url)).thenReturn(null);
+
+        Boolean response = podService.checkIfPodExistByUrl(url);
+
+        assertFalse(response, "ERROR: Response was true");
+
+        verify(podRepositoryMock).findPodByUrl(url);
+    }
 }

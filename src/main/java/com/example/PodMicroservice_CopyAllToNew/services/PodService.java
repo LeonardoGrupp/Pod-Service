@@ -301,4 +301,11 @@ public class PodService implements PodServiceInterface {
 
         return "Disliked " + podToDisLike.getType() + ": " + podToDisLike.getTitle();
     }
+
+    @Override
+    public Boolean checkIfPodExistByUrl(String url) {
+        Pod pod = podRepository.findPodByUrl(url);
+
+        return pod != null;
+    }
 }
