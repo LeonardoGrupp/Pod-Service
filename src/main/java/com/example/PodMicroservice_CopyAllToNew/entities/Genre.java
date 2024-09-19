@@ -3,7 +3,8 @@ package com.example.PodMicroservice_CopyAllToNew.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pod_genres")
+//@Table(name = "pod_genres")
+@Table(name = "genres")
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

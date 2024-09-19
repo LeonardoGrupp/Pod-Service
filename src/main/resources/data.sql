@@ -10,7 +10,15 @@ CREATE TABLE IF NOT EXISTS pods (
     )
 ;
 
-CREATE TABLE IF NOT EXISTS pod_genres (
+-- CREATE TABLE IF NOT EXISTS pod_genres (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     genre VARCHAR(255) NOT NULL,
+--     total_likes INT DEFAULT 0,
+--     total_plays INT DEFAULT 0
+--     )
+-- ;
+
+CREATE TABLE IF NOT EXISTS genres (
     id INT AUTO_INCREMENT PRIMARY KEY,
     genre VARCHAR(255) NOT NULL,
     total_likes INT DEFAULT 0,
@@ -18,11 +26,19 @@ CREATE TABLE IF NOT EXISTS pod_genres (
     )
 ;
 
+-- CREATE TABLE IF NOT EXISTS pods_genres (
+--     pods_id INT,
+--     genre_id INT,
+--     FOREIGN KEY(pods_id) REFERENCES pods(id),
+--     FOREIGN KEY(genre_id) REFERENCES pod_genres(id)
+--     )
+-- ;
+
 CREATE TABLE IF NOT EXISTS pods_genres (
     pods_id INT,
     genre_id INT,
     FOREIGN KEY(pods_id) REFERENCES pods(id),
-    FOREIGN KEY(genre_id) REFERENCES pod_genres(id)
+    FOREIGN KEY(genre_id) REFERENCES genres(id)
     )
 ;
 
@@ -42,18 +58,32 @@ CREATE TABLE IF NOT EXISTS pods_albums (
     )
 ;
 
+-- -- INSERT Genres
+-- INSERT INTO pod_genres (id, genre, total_likes, total_plays)
+-- VALUES
+--     (1, 'Comedy', 0, 0),
+--     (2, 'Movies', 0, 0),
+--     (3, 'Crime', 0, 0),
+--     (4, 'Politics', 0, 0),
+--     (5, 'Business', 0, 0),
+--     (6, 'Economy', 0, 0),
+--     (7, 'Sports', 0, 0),
+--     (8, 'Fashion', 0, 0),
+--     (9, 'Space', 0, 0)
+-- ;
+
 -- INSERT Genres
-INSERT INTO pod_genres (id, genre, total_likes, total_plays)
+INSERT INTO genres (id, genre, total_likes, total_plays)
 VALUES
-    (1, 'Comedy', 0, 0),
-    (2, 'Movies', 0, 0),
-    (3, 'Crime', 0, 0),
-    (4, 'Politics', 0, 0),
-    (5, 'Business', 0, 0),
-    (6, 'Economy', 0, 0),
-    (7, 'Sports', 0, 0),
-    (8, 'Fashion', 0, 0),
-    (9, 'Space', 0, 0)
+    (10, 'Comedy', 0, 0),
+    (11, 'Movies', 0, 0),
+    (12, 'Crime', 0, 0),
+    (13, 'Politics', 0, 0),
+    (14, 'Business', 0, 0),
+    (15, 'Economy', 0, 0),
+    (16, 'Sports', 0, 0),
+    (17, 'Fashion', 0, 0),
+    (18, 'Space', 0, 0)
 ;
 
 INSERT INTO pods (id, type, title, url, release_date, play_counter, likes, dis_likes)
@@ -79,13 +109,13 @@ INSERT INTO pods_genres (pods_id, genre_id)
 VALUES
     -- MUSIC
     -- joe rogan episodes to genre
-    (1, 5), (2, 1), (3, 2), (4, 9),
+    (1, 14), (2, 10), (3, 11), (4, 18),
 
     -- lex fridman episodes to genre
-    (5, 9), (6, 4), (7, 4), (7, 5), (8, 4),
+    (5, 18), (6, 13), (7, 13), (7, 14), (8, 13),
 
     -- theo von episodes to genre
-    (9, 1), (10, 1), (11, 1), (12, 1)
+    (9, 10), (10, 10), (11, 10), (12, 10)
 ;
 
 -- INSERT Artists
