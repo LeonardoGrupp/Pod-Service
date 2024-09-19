@@ -1,3 +1,47 @@
+CREATE TABLE IF NOT EXISTS pods (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL,
+    title VARCHAR(250) NOT NULL,
+    url VARCHAR(250) NOT NULL,
+    release_date DATE NOT NULL,
+    play_counter INT DEFAULT 0,
+    likes INT DEFAULT 0,
+    dis_likes INT DEFAULT 0
+    )
+;
+
+CREATE TABLE IF NOT EXISTS pod_genres (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    genre VARCHAR(255) NOT NULL,
+    total_likes INT DEFAULT 0,
+    total_plays INT DEFAULT 0
+    )
+;
+
+CREATE TABLE IF NOT EXISTS pods_genres (
+    pods_id INT,
+    genre_id INT,
+    FOREIGN KEY(pods_id) REFERENCES pods(id),
+    FOREIGN KEY(genre_id) REFERENCES pod_genres(id)
+    )
+;
+
+CREATE TABLE IF NOT EXISTS pods_artists (
+    pods_id INT,
+    artist_id INT,
+    FOREIGN KEY(pods_id) REFERENCES pods(id),
+    FOREIGN KEY(artist_id) REFERENCES artist(id)
+    )
+;
+
+CREATE TABLE IF NOT EXISTS pods_albums (
+    pods_id INT,
+    album_id INT,
+    FOREIGN KEY(pods_id) REFERENCES pods(id),
+    FOREIGN KEY(album_id) REFERENCES album(id)
+    )
+;
+
 -- INSERT Genres
 INSERT INTO pod_genres (id, genre, total_likes, total_plays)
 VALUES
@@ -45,35 +89,62 @@ VALUES
 ;
 
 -- INSERT Artists
-INSERT INTO pods_artists (pods_id, id, name)
+INSERT INTO pods_artists (pods_id, artist_id)
 VALUES
     -- POD
     --The Joe Rogan Experience
-    (1, 11, 'Joe Rogan'), (2, 11, 'Joe Rogan'), (3, 11, 'Joe Rogan'), (4, 11, 'Joe Rogan'),
+    (1, 11), -- Joe Rogan
+    (2, 11), -- Joe Rogan
+    (3, 11), -- Joe Rogan
+    (4, 11), -- Joe Rogan
     -- Features
-    (1, 12, 'Elon Musk'), (2, 14, 'Kevin Hart'), (3, 13, 'Quentin Tarantino'), (4, 15, 'Neil deGrasse Tyson'),
+    (1, 12), -- Elon Musk
+    (2, 14), -- Kevin Hart
+    (3, 13), -- Quentin Tarantino
+    (4, 15), -- Neil deGrasse Tyson
 
     --Lex Fridman
-    (5, 16, 'Lex Fridman'), (6, 16, 'Lex Fridman'), (7, 16, 'Lex Fridman'), (8, 16, 'Lex Fridman'),
+    (5, 16), -- Lex Fridman
+    (6, 16), -- Lex Fridman
+    (7, 16), -- Lex Fridman
+    (8, 16), -- Lex Fridman
     -- Features
-    (5, 12, 'Elon Musk'), (6, 17, 'Tucker Carlson'), (7, 18, 'Kanye West'), (8, 19, 'Paul Rosolie'),
+    (5, 12), -- Elon Musk
+    (6, 17), -- Tucker Carlson
+    (7, 18), -- Kanye West
+    (8, 19), -- Paul Rosolie
 
     --Theo Von
-    (9, 20, 'Theo Von'), (10, 20, 'Theo Von'), (11, 20, 'Theo Von'), (12, 20, 'Theo Von'),
+    (9, 20), -- Theo Von
+    (10, 20), -- Theo Von
+    (11, 20), -- Theo Von
+    (12, 20), -- Theo Von
     -- Features
-    (9, 21, 'Bobby Lee'), (10, 22, 'KSI'), (11, 23, 'Druski'), (12, 24, 'Post Malone')
+    (9, 21), -- Bobby Lee
+    (10, 22), -- KSI
+    (11, 23), -- Druski
+    (12, 24) -- Post Malone
 ;
 
 -- INSERT ALbums
-INSERT INTO pods_albums (pods_id, id, name)
+INSERT INTO pods_albums (pods_id, album_id)
 VALUES
     -- MUSIC
     -- The Joe Rogan Experience
-    (1, 6, 'The Joe Rogan Experience'), (2, 6, 'The Joe Rogan Experience'), (3, 6, 'The Joe Rogan Experience'), (4, 6, 'The Joe Rogan Experience'),
+    (1, 6), -- The Joe Rogan Experience
+    (2, 6), -- The Joe Rogan Experience
+    (3, 6), -- The Joe Rogan Experience
+    (4, 6), -- The Joe Rogan Experience
 
-    -- Lex Fridman Podcast FIXAR SEN
-    (5, 7, 'Lex Fridman Podcast'), (6, 7, 'Lex Fridman Podcast'), (7, 7, 'Lex Fridman Podcast'), (8, 7, 'Lex Fridman Podcast'),
+    -- Lex Fridman Podcast
+    (5, 7), -- Lex Fridman Podcast
+    (6, 7), -- Lex Fridman Podcast
+    (7, 7), -- Lex Fridman Podcast
+    (8, 7), -- Lex Fridman Podcast
 
     -- This Past Weekend (Theo Von's)
-    (9, 8, 'This Past Weekend'), (10, 8, 'This Past Weekend'), (11, 8, 'This Past Weekends'), (12, 8, 'This Past Weekend')
+    (9, 8), -- This Past Weekend
+    (10, 8), -- This Past Weekend
+    (11, 8), -- This Past Weekend
+    (12, 8) -- This Past Weekend
 ;

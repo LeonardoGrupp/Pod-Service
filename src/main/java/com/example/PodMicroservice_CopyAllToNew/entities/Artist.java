@@ -1,11 +1,17 @@
-package com.example.PodMicroservice_CopyAllToNew.vo;
+package com.example.PodMicroservice_CopyAllToNew.entities;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-@Embeddable
+@Entity
 public class Artist {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
 
     public Artist() {
@@ -17,10 +23,6 @@ public class Artist {
 
     public Artist(long id, String name) {
         this.id = id;
-        this.name = name;
-    }
-
-    public Artist(String name, String albumIdsString) {
         this.name = name;
     }
 

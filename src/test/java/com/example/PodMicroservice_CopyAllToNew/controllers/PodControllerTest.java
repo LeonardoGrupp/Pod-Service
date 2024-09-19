@@ -1,9 +1,10 @@
 package com.example.PodMicroservice_CopyAllToNew.controllers;
 
 import com.example.PodMicroservice_CopyAllToNew.dto.PodDTO;
+import com.example.PodMicroservice_CopyAllToNew.entities.Album;
+import com.example.PodMicroservice_CopyAllToNew.entities.Artist;
 import com.example.PodMicroservice_CopyAllToNew.entities.Genre;
 import com.example.PodMicroservice_CopyAllToNew.entities.Pod;
-import com.example.PodMicroservice_CopyAllToNew.vo.*;
 import com.example.PodMicroservice_CopyAllToNew.services.PodService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
