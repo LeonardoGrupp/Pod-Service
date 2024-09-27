@@ -60,6 +60,8 @@ public class GenreService implements GenreServiceInterface {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "ERROR: Genre already exists");
         }
 
+        genre.setType("pod");
+
         return genreRepository.save(genre);
     }
 

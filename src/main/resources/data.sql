@@ -43,30 +43,30 @@ CREATE TABLE IF NOT EXISTS pods_albums (
 ;
 
 -- INSERT Genres
-INSERT INTO genres (id, genre, total_likes, total_plays)
+INSERT INTO genres (id, genre, type, total_likes, total_plays)
 VALUES
-    (10, 'Comedy', 0, 0),
-    (11, 'Movies', 0, 0),
-    (12, 'Crime', 0, 0),
-    (13, 'Politics', 0, 0),
-    (14, 'Business', 0, 0),
-    (15, 'Economy', 0, 0),
-    (16, 'Sports', 0, 0),
-    (17, 'Fashion', 0, 0),
-    (18, 'Space', 0, 0)
+    (10, 'Comedy', 'pod', 0, 0),
+    (11, 'Movies', 'pod', 0, 0),
+    (12, 'Crime', 'pod', 0, 0),
+    (13, 'Politics', 'pod', 0, 0),
+    (14, 'Business', 'pod', 0, 0),
+    (15, 'Economy', 'pod', 0, 0),
+    (16, 'Sports', 'pod', 0, 0),
+    (17, 'Fashion', 'pod', 0, 0),
+    (18, 'Space', 'pod', 0, 0)
 ;
 
 INSERT INTO pods (id, type, title, url, release_date, play_counter, likes, dis_likes)
 VALUES
     -- POD
     -- Joe Rogan
-    (1, 'Pod', '#1169', 'url66', '2006-02-07', 0, 0, 0), (2, 'Pod','#1278', 'url67', '2006-02-07', 0, 0, 0), (3, 'Pod', '#1675', 'url68', '2006-02-07', 0, 0, 0), (4, 'Pod', '#919', 'url69', '2006-02-07', 0, 0, 0),
+    (1, 'pod', '#1169', 'url66', '2006-02-07', 0, 0, 0), (2, 'pod','#1278', 'url67', '2006-02-07', 0, 0, 0), (3, 'pod', '#1675', 'url68', '2006-02-07', 0, 0, 0), (4, 'pod', '#919', 'url69', '2006-02-07', 0, 0, 0),
 
     -- Lex Fridman
-    (5, 'Pod', 'Neuralink and the Guture of Humanity', 'url70', '2006-02-07', 0, 0, 0), (6, 'Pod', 'Putin, Navalny, Trump, CIA, NSA, War, Politics & Freedom', 'url71', '2006-02-07', 0, 0, 0), (7, 'Pod', 'Kanye West Interview', 'url72', '2006-02-07', 0, 0, 0), (8, 'Pod', 'Jungle, Apex Predators, Aliens, Uncontacted Tribes and God', 'url73', '2006-02-07', 0, 0, 0),
+    (5, 'pod', 'Neuralink and the Guture of Humanity', 'url70', '2006-02-07', 0, 0, 0), (6, 'pod', 'Putin, Navalny, Trump, CIA, NSA, War, Politics & Freedom', 'url71', '2006-02-07', 0, 0, 0), (7, 'pod', 'Kanye West Interview', 'url72', '2006-02-07', 0, 0, 0), (8, 'pod', 'Jungle, Apex Predators, Aliens, Uncontacted Tribes and God', 'url73', '2006-02-07', 0, 0, 0),
 
     -- Theo Von
-    (9, 'Pod', '#530', 'url74', '2006-02-07', 0, 0, 0), (10, 'Pod', '#514', 'url75', '2006-02-07', 0, 0, 0), (11, 'Pod', '#489', 'url76', '2006-02-07', 0, 0, 0), (12, 'Pod', '#529', 'url77', '2006-02-07', 0, 0, 0)
+    (9, 'pod', '#530', 'url74', '2006-02-07', 0, 0, 0), (10, 'pod', '#514', 'url75', '2006-02-07', 0, 0, 0), (11, 'pod', '#489', 'url76', '2006-02-07', 0, 0, 0), (12, 'pod', '#529', 'url77', '2006-02-07', 0, 0, 0)
 ;
 
 INSERT INTO pods_genres (pods_id, genre_id)
