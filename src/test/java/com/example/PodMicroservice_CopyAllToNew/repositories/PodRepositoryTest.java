@@ -5,33 +5,40 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-@ActiveProfiles("test")
+@ActiveProfiles("test")                                                             // kör konfigurationen från application-test.properties
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)       // Gör en rollback efter varje test så att inget förändras i H2-databasen
 class PodRepositoryTest {
 
     @Autowired
     private PodRepository podRepository;
-    private Pod pod1;
 
     @BeforeEach
     void setUp() {
-        pod1 = new Pod("podtitle", "url10", "2010-02-10");
-        Pod comedy1 = new Pod("comedy pod", "url11", "2009-01-11");
-        Pod comedy2 = new Pod("funny pod", "url12", "2011-05-13");
-
-        podRepository.save(pod1);
-        podRepository.save(comedy1);
-        podRepository.save(comedy2);
+        podRepository.save(new Pod("The Greatest", "url2000", "2016"));
+        Pod pod = new Pod("Kickstart My Heart", "url2001", "1990");
+        podRepository.save(pod);
     }
 
     @Test
-    void findPodByUrlShouldReturnPod() {
-        Pod pod = podRepository.findPodByUrl("url99");
+    void findPodByUrlShouldReturnPodWithTitleTheGreatest() {
+        Pod pod = podRepository.findPodByUrl("url2000");
+        assertEquals("The Greatest", pod.getTitle());
+    }
 
-        assertEquals(pod, pod1, "ERROR: Pod was not identical");
+    @Test
+    void findPodByUrlShouldReturnPodWithIdTwo() {
+        Pod pod = podRepository.findPodByUrl("url2001");
+        assertEquals(2, pod.getId());
+    }
+
+    @Test
+    void findPodByUrlShouldReturnNullWhenUrlDoesNotExist() {
+        Pod pod = podRepository.findPodByUrl("url9999");
+        assertNull(pod);
     }
 }

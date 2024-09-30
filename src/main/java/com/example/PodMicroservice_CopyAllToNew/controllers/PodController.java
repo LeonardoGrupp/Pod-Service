@@ -3,11 +3,9 @@ package com.example.PodMicroservice_CopyAllToNew.controllers;
 import com.example.PodMicroservice_CopyAllToNew.dto.PodDTO;
 import com.example.PodMicroservice_CopyAllToNew.entities.Pod;
 import com.example.PodMicroservice_CopyAllToNew.services.PodService;
-import com.example.PodMicroservice_CopyAllToNew.services.PodServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

@@ -1,7 +1,6 @@
 package com.example.PodMicroservice_CopyAllToNew.services;
 
 import com.example.PodMicroservice_CopyAllToNew.entities.Genre;
-
 import java.util.List;
 
 public interface GenreServiceInterface {

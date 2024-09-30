@@ -5,7 +5,6 @@ import com.example.PodMicroservice_CopyAllToNew.entities.Album;
 import com.example.PodMicroservice_CopyAllToNew.entities.Artist;
 import com.example.PodMicroservice_CopyAllToNew.entities.Genre;
 import com.example.PodMicroservice_CopyAllToNew.entities.Pod;
-
 import java.util.List;
 
 public interface PodServiceInterface {
