@@ -24,6 +24,21 @@ public class Genre {
         this.totalPlays = 0;
     }
 
+    public Genre(String genre, String type, int totalLikes, int totalPlays) {
+        this.genre = genre;
+        this.type = "pod";
+        this.totalLikes = 0;
+        this.totalPlays = 0;
+    }
+
+    public Genre(long id, String genre, String type, int totalLikes, int totalPlays) {
+        this.id = id;
+        this.genre = genre;
+        this.type = "pod";
+        this.totalLikes = 0;
+        this.totalPlays = 0;
+    }
+
     public long getId() {
         return id;
     }

@@ -1,7 +1,6 @@
 package com.example.PodMicroservice_CopyAllToNew.entities;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -176,7 +175,7 @@ public class Pod {
         this.likes += 1;
     }
 
-    public void resetLies() {
+    public void resetLikes() {
         this.likes = 0;
     }
 
